@@ -1,0 +1,23 @@
+{
+  "name": "react-native-thermal-printer",
+  "version": "0.0.1",
+  "description": "This is an universal thermal printer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mybigday/react-native-thermal-printer"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "android",
+    "xprinter",
+    "usb",
+    "thermal printer"
+  ],
+  "author": "Pepper Yen <pepper.yen@gmail.com>",
+  "license": "MIT"
+}
