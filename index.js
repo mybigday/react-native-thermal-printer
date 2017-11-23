@@ -20,6 +20,18 @@ export default class ThermalPrinter {
     const config = Object.assign({}, defaultSetting, props);
     RNThermalPrinter.initilize(config.type);
   }
+  writeText(text, property) {
+    RNThermalPrinter.writeText(text, property);
+  }
+  writeQRCode(content, property) {
+    RNThermalPrinter.writeText(content, property);
+  }
+  writeFeed(length) {
+    RNThermalPrinter.writeFeed(length);
+  }
+  print() {
+    RNThermalPrinter.print();
+  }
   printDemo() {
     RNThermalPrinter.writeText('Hello!!!', {
       size: 0,
