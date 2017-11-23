@@ -1,6 +1,6 @@
 {
   "name": "@fugood/react-native-thermal-printer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is an universal thermal printer.",
   "main": "index.js",
   "scripts": {
