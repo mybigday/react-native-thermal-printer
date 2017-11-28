@@ -15,7 +15,7 @@ function CheckPlatformSupport() {
 export default class ThermalPrinter {
   constructor(props) {
     const defaultSetting = {
-      type: 'THERMAL_PRINTER_WANG_POS'
+      type: 'THERMAL_PRINTER_EPSON_MT532AP'
     }
     const config = Object.assign({}, defaultSetting, props);
     RNThermalPrinter.initilize(config.type);
@@ -24,36 +24,60 @@ export default class ThermalPrinter {
     RNThermalPrinter.writeText(text, property);
   }
   writeQRCode(content, property) {
-    RNThermalPrinter.writeText(content, property);
+    RNThermalPrinter.writeQRCode(content, property);
+  }
+  writeImage(path, property) {
+    RNThermalPrinter.writeImage(path, property);
   }
   writeFeed(length) {
     RNThermalPrinter.writeFeed(length);
   }
-  print() {
-    RNThermalPrinter.print();
+  writeCut(type) {
+    RNThermalPrinter.writeCut({
+      'cut': type,
+    });
+  }
+  startPrint() {
+    RNThermalPrinter.startPrint();
+  }
+  endPrint() {
+    RNThermalPrinter.endPrint();
   }
   printDemo() {
-    RNThermalPrinter.writeText('Hello!!!', {
+    this.startPrint();
+    this.writeText('Hello!!!', {
       size: 0,
-
+      linebreak: true,
+      align: 'left',
     });
-    RNThermalPrinter.writeText('Hello!!!', {
+    this.writeText('Hello!!!', {
       size: 1,
       linebreak: true,
+      align: 'center',
     });
-    RNThermalPrinter.writeText('Hello!!!', {
+    this.writeText('Hello!!!', {
       size: 2,
       italic: true,
       linebreak: true,
+      align: 'right',
     });
-    RNThermalPrinter.writeText('Hello!!!', {
+    this.writeText('Hello!!!', {
       size: 3,
       bold: true,
+      linebreak: true,
+      underline: true,
     });
-    RNThermalPrinter.writeQRCode('http://www.mybigday.com.tw', {
+    this.writeFeed(5);
+    this.writeQRCode('http://www.mybigday.com.tw', {
       size: 20,
       align: 'left',
+      level: 'H',
     });
-    RNThermalPrinter.print();
+    this.writeFeed(10);
+    this.writeImage('/mnt/sdcard/Download/1.png', {});
+    this.writeFeed(30);
+
+    this.writeCut('full');
+    this.endPrint();
   }
 }

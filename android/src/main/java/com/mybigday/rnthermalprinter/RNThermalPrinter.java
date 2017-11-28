@@ -41,6 +41,8 @@ public class RNThermalPrinter extends ReactContextBaseJavaModule implements Prin
             case "THERMAL_PRINTER_WANG_POS":
                 printer = new WangPosPrinter(getReactApplicationContext(), this);
                 break;
+            case "THERMAL_PRINTER_EPSON_MT532AP":
+                printer = new EpsonMT532AP(getReactApplicationContext(), this);
         }
     }
 
@@ -55,12 +57,23 @@ public class RNThermalPrinter extends ReactContextBaseJavaModule implements Prin
     }
 
     @ReactMethod
+    public void writeImage(String path, ReadableMap property) {
+        printer.writeImage(path, property);
+    }
+
+    @ReactMethod
     public void writeFeed(int length) {
         printer.writeFeed(length);
     }
 
     @ReactMethod
-    public void print() {
-        printer.print();
+    public void writeCut(ReadableMap property) { printer.writeCut(property); }
+
+    @ReactMethod
+    public void startPrint() { printer.startPrint(); }
+
+    @ReactMethod
+    public void endPrint() {
+        printer.endPrint();
     }
 }

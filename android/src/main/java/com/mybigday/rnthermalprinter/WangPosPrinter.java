@@ -66,6 +66,8 @@ public class WangPosPrinter implements Printer{
             }
         });
     }
+
+    @Override
     public void writeText(String text, ReadableMap property) {
         if (property.hasKey("linebreak") && property.getBoolean("linebreak") == true) {
             text = text + '\n';
@@ -95,6 +97,8 @@ public class WangPosPrinter implements Printer{
         }
         latticePrinter.printText(text, LatticePrinter.FontFamily.SONG, size, style);
     }
+
+    @Override
     public void writeQRCode(String content, ReadableMap property) {
         int size = 50;
         if (property.hasKey("size")) {
@@ -119,10 +123,25 @@ public class WangPosPrinter implements Printer{
         }
         latticePrinter.printQrCode(content, size, gravity);
     }
+
+    @Override
+    public void writeImage(String path, ReadableMap property) {
+
+    }
+
+    @Override
     public void writeFeed(int length) {
         latticePrinter.feed(length);
     }
-    public void print() {
+
+    @Override
+    public void writeCut(ReadableMap property) { }
+
+    @Override
+    public void startPrint() {}
+
+    @Override
+    public void endPrint() {
         latticePrinter.submitPrint();
     }
 }

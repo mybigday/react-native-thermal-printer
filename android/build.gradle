@@ -33,10 +33,11 @@ repositories {
 }
 
 dependencies {
-    fileTree(dir: 'libs', include: '**/*.aar')
-    .each { File file ->
-        dependencies.add("compile", [name: file.name.lastIndexOf('.').with { it != -1 ? file.name[0..<it] : file.name }, ext: 'aar'])
-    }
+//    fileTree(dir: 'libs', include: '**/*.aar')
+//    .each { File file ->
+//        dependencies.add("compile", [name: file.name.lastIndexOf('.').with { it != -1 ? file.name[0..<it] : file.name }, ext: 'aar'])
+//    }
+//    compile(name:'printlib-debug', ext:'aar')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.facebook.react:react-native:+"
 }
