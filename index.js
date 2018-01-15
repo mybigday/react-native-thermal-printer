@@ -54,6 +54,7 @@ export default class ThermalPrinter {
       size: 1,
       linebreak: true,
       align: 'center',
+      underline: true,
     });
     this.writeText('Hello!!!', {
       size: 2,
@@ -61,21 +62,41 @@ export default class ThermalPrinter {
       linebreak: true,
       align: 'right',
     });
-    this.writeText('Hello!!!', {
+    this.writeText('中文測試', {
       size: 3,
+      bold: true,
+      linebreak: true,
+      underline: true,
+    });
+    this.writeText('中文測試', {
+      size: 1,
       bold: true,
       linebreak: true,
       underline: true,
     });
     this.writeFeed(5);
     this.writeQRCode('http://www.mybigday.com.tw', {
-      size: 20,
+      size: 16,
       align: 'left',
       level: 'H',
     });
     this.writeFeed(10);
     this.writeImage('/mnt/sdcard/Download/1.png', {});
     this.writeFeed(30);
+
+    this.writeText('中文測試2', {
+      size: 3,
+      bold: true,
+      linebreak: true,
+      underline: true,
+    });
+    this.writeText('中文測試2', {
+      size: 1,
+      bold: true,
+      align: 'right',
+      linebreak: true,
+      underline: true,
+    });
 
     this.writeCut('full');
     this.endPrint();

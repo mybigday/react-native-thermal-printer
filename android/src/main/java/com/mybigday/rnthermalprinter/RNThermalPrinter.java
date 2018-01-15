@@ -37,12 +37,17 @@ public class RNThermalPrinter extends ReactContextBaseJavaModule implements Prin
 
     @ReactMethod
     public void initilize(String type) {
+//        Toast.makeText(getReactApplicationContext(), "Select type:" + type, Toast.LENGTH_LONG);
         switch (type) {
             case "THERMAL_PRINTER_WANG_POS":
                 printer = new WangPosPrinter(getReactApplicationContext(), this);
                 break;
             case "THERMAL_PRINTER_EPSON_MT532AP":
                 printer = new EpsonMT532AP(getReactApplicationContext(), this);
+                break;
+            case "THERMAL_PRINTER_ACLAS":
+                printer = new AclasPrinter(getReactApplicationContext(), this);
+                break;
         }
     }
 
